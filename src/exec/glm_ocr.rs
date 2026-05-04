@@ -47,7 +47,7 @@ impl ExecModel for GlmOcrExec {
                 ],
                 "max_tokens": 1024
             }}"#,
-            input_url
+            input_url.replace('\\', "\\\\")
         );
 
         let mes = serde_json::from_str(&message)?;

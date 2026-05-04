@@ -222,7 +222,7 @@ pub fn crate_tensor_from_reader<R: std::io::Read>(
             reader.read_i64_into::<LittleEndian>(&mut data_t)?;
             Ok(Tensor::from_vec(data_t, shape, &Device::Cpu)?)
         }
-        DType::F8E4M3 | DType::F6E2M3 | DType::F6E3M2 | DType::F4 | DType::F8E8M0 => {
+        DType::F8E4M3 | DType::F6E2M3 | DType::F6E3M2 | DType::F4 | DType::F8E8M0 | _ => {
             Err(anyhow!(format!("UnsupportedDTypeForOp '{:?}'", dtype)))
         }
     }
